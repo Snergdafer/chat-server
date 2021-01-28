@@ -28,17 +28,6 @@ In this step, we will create a `package.json` and install our dependencies.
 
 <details>
 
-<summary> Detailed Instructions </summary>
-
-<br />
-
-Using `npm` we can quickly create a `package.json` file. In your terminal, when in the root of the project, run `npm init -y`. The `-y` flag will create a `package.json` file with all the default values. It's that simple. Now we can use `npm` to install packages and save them to the `package.json` file. Run `npm install express` to install and save the express package.
-
-</details>
-
-### Solution
-
-<img src="https://github.com/DevMountain/node-2-afternoon/blob/solution/readme-assets/1g.gif" />
 
 ## Step 2
 
@@ -51,17 +40,6 @@ In this step, we will create a `.gitignore` file so our `node_modules` folder do
 * Create a `.gitignore` file in the root of the project.
 * Add `node_modules` to the file.
 
-### Solution
-
-<details>
-
-<summary> <code> .gitignore </code> </summary>
-
-```
-node_modules
-```
-
-</details>
 
 ## Step 3
 
@@ -79,6 +57,176 @@ In this step, we will create our `index.js` file.
 
 <details>
 
+## Step 4
+
+### Summary
+
+In this step, we will create a controller that will handle the logic to create, read, update, and delete messages. A message will be an object with an `id`, `text`, and `time` property. 
+
+### Instructions
+
+* Create a `controllers` folder in `server/`.
+* Create a `messages_controller` in `server/controllers/`.
+* Open `server/controllers/messages_controller.js`.
+* Create an array to hold the messages.
+* Create a variable that will keep track of what `id` to assign to messages.
+  * The `id` should start at `0` and increment after every creation.
+* Export an object with methods to create, read, update, and delete messages.
+  * Create - Should be able to create a message using `text` and `time` off of the request body.
+    * Should be able to assign a unique `id` to the message.
+  * Read - Should be able to return the messages array.
+  * Update - Should be able to update the `text` property of a message using the request body.
+    * Should be able to determine which message to update using an `id` url parameter.
+  * Delete - Should be able to delete a message using an `id` url parameter.
+* All methods should send a response of the updated messages array.
+
+<details>
+
+
+## Step 5
+
+### Summary
+
+In this step, we will hook up our controller to our app in `server/index.js`.
+
+### Instructions
+
+* Open `server/index.js`.
+* Require the messages controller.
+* Create a `post`, `get`, `put`, and `delete` endpoint that use the corressponding method on the messages controller.
+* The url for this api should be `/api/messages`.
+  * Remember to add on a url parameter of `id` for the methods that are using it.
+
+<details>
+
+
+## Step 6
+
+### Summary
+
+In this step, we will test the API endpoints using `Postman` unit tests.
+
+### Instructions
+
+* Startup the API and make sure it doesn't crash.
+* Open `Postman`.
+* Import the `postman_collection` into `Postman`.
+* Run the collection's tests.
+  * If all tests do not pass, revist previous steps.
+  * **TESTS WILL ONLY PASS IF THE 'MESSAGES' ARRAY IS EMPTY WHEN THE POSTMAN COLLECTION STARTS** Restart your server (the command is 'rs') to reset your array to empty before running the tests. 
+
+
+## Step 7
+
+### Summary
+
+In this step, we will setup the API to serve our front-end files.
+
+### Instructions
+
+* Open `server/index.js`.
+* Use `express.static` to serve the `public/build` folder.
+  * Restart the API or Start the API.
+* Open `http://localhost:3001/` to see the front-end interact with the API.
+
+
+<br />
+
+<img src="https://github.com/DevMountain/node-2-afternoon/blob/solution/readme-assets/2g.gif" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Resources
+
+<details>
+
+<summary> <code> Express </code> </summary>
+
+* [Req.Body](https://expressjs.com/en/api.html#req.body)
+  _Note: They use body-parser to parse the body, we use express.json_
+* [Req.Query](https://expressjs.com/en/api.html#req.query)
+* [Req.Params](https://expressjs.com/en/api.html#req.params)
+* [Express.Static](https://expressjs.com/en/api.html#express.static)
+  _Note: This will generally look like express.static(__dirname, '/path/to/build/folder')_
+* [Get Request](https://expressjs.com/en/api.html#app.get)
+* [Post Request](https://expressjs.com/en/api.html#app.post.method)
+  _Note: Typically, you'll use post when you need to pass complex data (objects, arrays, etc) back to the server on the body_
+  _post requests get access to req.body because of express.json and are used for adding new data_
+* [Put Request](https://expressjs.com/en/api.html#app.put.method)
+  _Note: Typically, you'll use put when you need to pass complex data (objects, arrays, etc) back to the server on the body_
+  _put requests get access to req.body because of express.json and are used for updating existing data_
+* [Delete Request](https://expressjs.com/en/api.html#app.delete.method)
+  _Note: Typically you'll use a path parameter to target what data you'd like to delete via an ID or other unique info_
+
+</details>
+
+## Contributions
+
+If you see a problem or a typo, please fork, make the necessary changes, and create a pull request so we can review your changes and merge them into the master repo and branch.
+
+## Copyright
+
+© DevMountain LLC, 2017. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
+
+<p align="center">
+<img src="https://s3.amazonaws.com/devmountain/readme-logo.png" width="250">
+</p>
+
+
+
+
+
+
+
+Step 1
+<summary> Detailed Instructions </summary>
+
+<br />
+
+Using `npm` we can quickly create a `package.json` file. In your terminal, when in the root of the project, run `npm init -y`. The `-y` flag will create a `package.json` file with all the default values. It's that simple. Now we can use `npm` to install packages and save them to the `package.json` file. Run `npm install express` to install and save the express package.
+
+</details>
+
+### Solution
+
+<img src="https://github.com/DevMountain/node-2-afternoon/blob/solution/readme-assets/1g.gif" />
+
+
+
+step 2
+### Solution
+
+<details>
+
+<summary> <code> .gitignore </code> </summary>
+
+```
+node_modules
+```
+
+</details>
+
+
+
+step 3
 <summary> Detailed Instructions </summary>
 
 <br />
@@ -133,31 +281,11 @@ app.listen(port, () => {
 
 </details>
 
-## Step 4
 
-### Summary
 
-In this step, we will create a controller that will handle the logic to create, read, update, and delete messages. A message will be an object with an `id`, `text`, and `time` property. 
 
-### Instructions
 
-* Create a `controllers` folder in `server/`.
-* Create a `messages_controller` in `server/controllers/`.
-* Open `server/controllers/messages_controller.js`.
-* Create an array to hold the messages.
-* Create a variable that will keep track of what `id` to assign to messages.
-  * The `id` should start at `0` and increment after every creation.
-* Export an object with methods to create, read, update, and delete messages.
-  * Create - Should be able to create a message using `text` and `time` off of the request body.
-    * Should be able to assign a unique `id` to the message.
-  * Read - Should be able to return the messages array.
-  * Update - Should be able to update the `text` property of a message using the request body.
-    * Should be able to determine which message to update using an `id` url parameter.
-  * Delete - Should be able to delete a message using an `id` url parameter.
-* All methods should send a response of the updated messages array.
-
-<details>
-
+step 4
 <summary> Detailed Instructions </summary>
 
 <br />
@@ -292,22 +420,9 @@ module.exports = {
 
 </details>
 
-## Step 5
 
-### Summary
 
-In this step, we will hook up our controller to our app in `server/index.js`.
-
-### Instructions
-
-* Open `server/index.js`.
-* Require the messages controller.
-* Create a `post`, `get`, `put`, and `delete` endpoint that use the corressponding method on the messages controller.
-* The url for this api should be `/api/messages`.
-  * Remember to add on a url parameter of `id` for the methods that are using it.
-
-<details>
-
+step 5
 <summary> Detailed Instructions </summary>
 
 <br />
@@ -375,38 +490,17 @@ app.listen(port, () => {
 
 </details>
 
-## Step 6
 
-### Summary
-
-In this step, we will test the API endpoints using `Postman` unit tests.
-
-### Instructions
-
-* Startup the API and make sure it doesn't crash.
-* Open `Postman`.
-* Import the `postman_collection` into `Postman`.
-* Run the collection's tests.
-  * If all tests do not pass, revist previous steps.
-  * **TESTS WILL ONLY PASS IF THE 'MESSAGES' ARRAY IS EMPTY WHEN THE POSTMAN COLLECTION STARTS** Restart your server (the command is 'rs') to reset your array to empty before running the tests. 
-
+step 6
 ### Solution
 
 <img src="https://github.com/DevMountain/node-2-afternoon/blob/solution/readme-assets/2.png" />
 
-## Step 7
 
-### Summary
 
-In this step, we will setup the API to serve our front-end files.
 
-### Instructions
 
-* Open `server/index.js`.
-* Use `express.static` to serve the `public/build` folder.
-  * Restart the API or Start the API.
-* Open `http://localhost:3001/` to see the front-end interact with the API.
-
+step 7
 ### Solution
 
 <details>
@@ -435,44 +529,3 @@ app.listen(port, () => {
 ```
 
 </details>
-
-<br />
-
-<img src="https://github.com/DevMountain/node-2-afternoon/blob/solution/readme-assets/2g.gif" />
-
-
-## Resources
-
-<details>
-
-<summary> <code> Express </code> </summary>
-
-* [Req.Body](https://expressjs.com/en/api.html#req.body)
-  _Note: They use body-parser to parse the body, we use express.json_
-* [Req.Query](https://expressjs.com/en/api.html#req.query)
-* [Req.Params](https://expressjs.com/en/api.html#req.params)
-* [Express.Static](https://expressjs.com/en/api.html#express.static)
-  _Note: This will generally look like express.static(__dirname, '/path/to/build/folder')_
-* [Get Request](https://expressjs.com/en/api.html#app.get)
-* [Post Request](https://expressjs.com/en/api.html#app.post.method)
-  _Note: Typically, you'll use post when you need to pass complex data (objects, arrays, etc) back to the server on the body_
-  _post requests get access to req.body because of express.json and are used for adding new data_
-* [Put Request](https://expressjs.com/en/api.html#app.put.method)
-  _Note: Typically, you'll use put when you need to pass complex data (objects, arrays, etc) back to the server on the body_
-  _put requests get access to req.body because of express.json and are used for updating existing data_
-* [Delete Request](https://expressjs.com/en/api.html#app.delete.method)
-  _Note: Typically you'll use a path parameter to target what data you'd like to delete via an ID or other unique info_
-
-</details>
-
-## Contributions
-
-If you see a problem or a typo, please fork, make the necessary changes, and create a pull request so we can review your changes and merge them into the master repo and branch.
-
-## Copyright
-
-© DevMountain LLC, 2017. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
-
-<p align="center">
-<img src="https://s3.amazonaws.com/devmountain/readme-logo.png" width="250">
-</p>
